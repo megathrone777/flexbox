@@ -1,0 +1,33 @@
+{
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.23.1",
+    "styled-components": "^6.1.11"
+  },
+  "description": "Some description",
+  "devDependencies": {
+    "@eslint/js": "^9.3.0",
+    "@types/eslint__js": "^8.42.3",
+    "@types/node": "^20.12.12",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "esbuild": "^0.21.3",
+    "esbuild-plugin-clean": "^1.0.1",
+    "esbuild-plugin-eslint": "^0.3.12",
+    "esbuild-plugin-ts-checker": "^1.0.2",
+    "eslint": "^9.3.0",
+    "eslint-plugin-import-x": "^0.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.10.0"
+  },
+  "license": "UNLICENSED",
+  "name": "blank",
+  "private": true,
+  "scripts": {
+    "build": "ts-node ./esbuild-config/production.ts",
+    "dev": "ts-node ./esbuild-config/development.ts"
+  },
+  "version": "1.0.0"
+}
