@@ -11,18 +11,19 @@ export const StyledWrapper = styled.div({
 
 export const StyledSection = styled.div({
   borderBottom: "2px solid grey",
-  paddingBottom: 20,
+  paddingBottom: 15,
 });
 
 export const StyledTitle = styled.h2({
+  fontSize: 17,
   marginBottom: 10,
 });
 
 export const StyledList = styled.ul({
   alignItems: "stretch",
   display: "flex",
-  flexDirection: "column",
-  rowGap: 5,
+  flexWrap: "wrap",
+  gap: 5,
 });
 
 export const StyledButton = styled.button.withConfig({
@@ -35,10 +36,10 @@ export const StyledButton = styled.button.withConfig({
   color: "white",
   cursor: "pointer",
   fontFamily: "inherit",
-  fontSize: 17,
+  fontSize: 14,
   fontWeight: fonts.medium,
-  height: 34,
-  minWidth: 130,
+  height: 32,
+  minWidth: 117,
   paddingInline: 8,
   transition: "background-color .15s ease-in",
   userSelect: "none",
@@ -48,4 +49,6 @@ export const StyledButton = styled.button.withConfig({
   }),
 }));
 
-export const StyledCode = styled.code({});
+export const StyledInput = styled.input({
+  appearance: "none",
+});

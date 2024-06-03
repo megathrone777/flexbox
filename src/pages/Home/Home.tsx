@@ -12,6 +12,12 @@ const Home: React.FC = () => {
     <StyledWrapper {...flexProperties}>
       <StyledItem>Item</StyledItem>
       <StyledItem>Item</StyledItem>
+      <StyledItem>Item</StyledItem>
+      <StyledItem>Item</StyledItem>
+      <StyledItem>Item</StyledItem>
+      <StyledItem>Item</StyledItem>
+      <StyledItem>Item</StyledItem>
+      <StyledItem>Item</StyledItem>
     </StyledWrapper>
   );
 };

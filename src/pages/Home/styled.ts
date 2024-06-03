@@ -1,14 +1,26 @@
 import { styled } from "~/theme";
 
 export const StyledWrapper = styled.div.withConfig({
-  shouldForwardProp: (prop) => prop !== "alignItems" && prop !== "justifyContent",
-})<TFlexProperties>(({ alignItems, justifyContent }) => ({
-  alignItems,
-  columnGap: 20,
-  display: "flex",
-  height: "100%",
-  justifyContent,
-}));
+  shouldForwardProp: (prop) =>
+    prop !== "alignItems" &&
+    prop !== "flexDirection" &&
+    prop !== "justifyContent" &&
+    prop !== "columnGap" &&
+    prop !== "rowGap" &&
+    prop !== "flexDirection",
+})<TFlexProperties>(
+  ({ alignItems, columnGap, flexDirection, justifyContent, rowGap }) => ({
+    alignContent: alignItems,
+    alignItems,
+    columnGap,
+    display: "flex",
+    flexDirection,
+    flexWrap: "wrap",
+    height: "100%",
+    justifyContent,
+    rowGap,
+  })
+);
 
 export const StyledItem = styled.div(({ theme: { fonts } }) => ({
   alignItems: "center",

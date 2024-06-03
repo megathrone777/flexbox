@@ -5,7 +5,7 @@ export const StyledWrapper = styled.div({
   columnGap: 20,
   display: "flex",
   height: "100%",
-  padding: 20,
+  padding: 10,
 });
 
 export const StyledContent = styled.div({

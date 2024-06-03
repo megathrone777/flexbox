@@ -2,75 +2,35 @@ import React from "react";
 
 import { useStore } from "~/hooks";
 import { setFlexProperties } from "~/store";
-import type { TFlexItem, TSection } from "./types";
+import { sections } from "./data";
+import type { TFlexItem } from "./types";
 import {
   StyledWrapper,
   StyledSection,
   StyledTitle,
   StyledList,
+  StyledInput,
   StyledButton,
 } from "./styled";
-
-const sections: TSection[] = [
-  {
-    items: [
-      {
-        flexProperty: "alignItems",
-        flexValue: "flex-start",
-        title: "align-items",
-      },
-      {
-        flexProperty: "alignItems",
-        flexValue: "center",
-      },
-      {
-        flexProperty: "alignItems",
-        flexValue: "flex-end",
-      },
-      {
-        flexProperty: "alignItems",
-        flexValue: "stretch",
-      },
-    ],
-    title: "align-items",
-  },
-  {
-    items: [
-      {
-        flexProperty: "justifyContent",
-        flexValue: "flex-start",
-        title: "justify-content",
-      },
-      {
-        flexProperty: "justifyContent",
-        flexValue: "center",
-      },
-      {
-        flexProperty: "justifyContent",
-        flexValue: "flex-end",
-      },
-      {
-        flexProperty: "justifyContent",
-        flexValue: "space-between",
-      },
-      {
-        flexProperty: "justifyContent",
-        flexValue: "space-around",
-      },
-      {
-        flexProperty: "justifyContent",
-        flexValue: "space-evenly",
-      },
-    ],
-    title: "justify-content",
-  },
-];
 
 const Sidebar: React.FC = () => {
   const {
     dispatch,
     store: { flexProperties },
   } = useStore();
+
+  const handleGapChange = ({
+    currentTarget,
+  }: React.SyntheticEvent<HTMLInputElement>): void => {
+    const { dataset, value } = currentTarget;
+    const { property } = dataset;
+
+    dispatch(
+      setFlexProperties({
+        [property!]: +value as TFlexItem["flexValue"],
+      })
+    );
+  };
 
   const handleFlexPropertiesChange = ({
     currentTarget,
@@ -101,14 +61,24 @@ const Sidebar: React.FC = () => {
                       itemIndex: number
                     ): React.ReactElement => (
                       <li key={`${flexProperty}-${itemIndex}`}>
-                        <StyledButton
-                          active={flexValue === flexProperties[flexProperty]}
-                          onClick={handleFlexPropertiesChange}
-                          type="button"
-                          value={flexProperty}
-                        >
-                          {flexValue}
-                        </StyledButton>
+                        {typeof flexValue === "number" ? (
+                          <StyledInput
+                            data-property={flexProperty}
+                            min={0}
+                            onChange={handleGapChange}
+                            type="number"
+                            value={flexProperties[flexProperty]}
+                          />
+                        ) : (
+                          <StyledButton
+                            active={flexValue === flexProperties[flexProperty]}
+                            onClick={handleFlexPropertiesChange}
+                            type="button"
+                            value={flexProperty}
+                          >
+                            {flexValue}
+                          </StyledButton>
+                        )}
                       </li>
                     )
                   )}
@@ -121,7 +91,10 @@ const Sidebar: React.FC = () => {
       <ul>
         <li>display: flex;</li>
         <li>align-items: {flexProperties.alignItems};</li>
+        <li>flex-direction: {flexProperties.flexDirection};</li>
         <li>justify-content: {flexProperties.justifyContent};</li>
+        <li>column-gap: {flexProperties.columnGap}px;</li>
+        <li>row-gap: {flexProperties.rowGap}px;</li>
       </ul>
     </StyledWrapper>
   );
